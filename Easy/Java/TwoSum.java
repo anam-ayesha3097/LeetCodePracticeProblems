@@ -4,7 +4,7 @@ class TwoSum {
     public static void main(String[] args) {
         int indices[] = new int[2];
         int nums[] = { 3, 3 };
-        indices = twoSum(nums, 5);
+        indices = twoSum(nums, 6);
         if (indices[0] == -1 || indices[1] == -1)
             System.out.println("No Solution");
         else
@@ -16,17 +16,16 @@ class TwoSum {
         indices[0] = -1;
         indices[1] = -1;
 
-        //Base Case
-        if(nums.length <= 1)
+        // Base Case
+        if (nums.length <= 1)
             return indices;
 
-        //Base Case    
-        if(nums.length == 2)
-        {
-            if((nums[0] + nums[1]) == target)
+        // Base Case
+        if (nums.length == 2) {
+            if ((nums[0] + nums[1]) == target)
                 indices[0] = 0;
-                indices[1] = 1;
-                return indices;
+            indices[1] = 1;
+            return indices;
         }
 
         for (int i = 0; i < nums.length; i++) {
