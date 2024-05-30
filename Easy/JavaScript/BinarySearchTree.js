@@ -16,14 +16,24 @@ class BinarySearchTree {
     if (this.root === null) this.root = node;
     else {
       let temp = this.root;
-      let previous = temp;
       while (temp !== null) {
-        previous = temp;
-        if (temp.element < value) temp = temp.right;
-        else temp = temp.left;
+        if (temp.element < value && temp.right !== null) temp = temp.right;
+        else if (temp.element > value && temp.left !== null) temp = temp.left;
+        else break;
       }
-      if (previous.element > value) previous.left = node;
-      else previous.right = node;
+      if (temp.element > value) temp.left = node;
+      else temp.right = node;
+    }
+  };
+
+  searchNode = (value) => {
+    if (this.root !== null) {
+      let temp = this.root;
+      while (temp != null) {
+        if (temp.element === value) return true;
+        else if (temp.element > value) temp = temp.left;
+        else temp = temp.right;
+      }
     }
   };
 
@@ -74,3 +84,9 @@ bst.addNode(4);
 bst.addNode(7);
 bst.addNode(13);
 bst.printTree();
+
+const isPresent = bst.searchNode(15);
+if (isPresent) {
+  console.log("Found!");
+  bst.printTree();
+} else console.log("Not Found!");
